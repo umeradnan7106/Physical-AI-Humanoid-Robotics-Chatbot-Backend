@@ -1,0 +1,34 @@
+# Updated: 2025-12-18 - Force cache invalidation
+# FastAPI and Server
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
+python-multipart>=0.0.20
+
+# Google Gemini (FREE)
+google-generativeai>=0.8.0
+
+# Vector Database
+qdrant-client>=1.12.0
+
+# Database
+psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.25
+
+# Utilities
+python-dotenv==1.0.0
+pydantic>=2.10.0
+pydantic-settings>=2.7.0
+
+# CORS
+fastapi-cors>=0.0.6
+
+# Markdown processing
+markdown>=3.7
+beautifulsoup4>=4.12.3
+
+# FREE Embeddings (Local)
+sentence-transformers>=3.0.0
+torch>=2.6.0
+
+# Rate limiting
+slowapi>=0.1.9
