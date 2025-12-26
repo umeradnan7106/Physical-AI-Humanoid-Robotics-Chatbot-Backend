@@ -12,7 +12,10 @@ import uuid
 
 # Import custom modules
 from database import get_db, init_db, save_conversation, get_conversation_history, save_feedback, track_event
-from rag_free import chat_with_rag
+
+# Temporarily disable RAG import for deployment testing
+# from rag_free import chat_with_rag
+RAG_ENABLED = False
 
 load_dotenv()
 
@@ -106,11 +109,18 @@ async def chat(
         ]
         
         # Get RAG response
-        rag_result = chat_with_rag(
-            question=request.message,
-            session_history=session_history,
-            chapter_filter=request.chapter_context
-        )
+        if RAG_ENABLED:
+            rag_result = chat_with_rag(
+                question=request.message,
+                session_history=session_history,
+                chapter_filter=request.chapter_context
+            )
+        else:
+            # Temporary response while RAG is disabled
+            rag_result = {
+                "answer": "🚧 RAG chatbot is currently being deployed. Basic API is live! Full chat functionality will be available soon.",
+                "sources": []
+            }
         
         # Save to database
         conversation = save_conversation(
@@ -159,12 +169,19 @@ async def chat_selection(
         ]
         
         # Get RAG response with selected text
-        rag_result = chat_with_rag(
-            question=request.message,
-            session_history=session_history,
-            selected_text=request.selected_text,
-            chapter_filter=request.chapter_context
-        )
+        if RAG_ENABLED:
+            rag_result = chat_with_rag(
+                question=request.message,
+                session_history=session_history,
+                selected_text=request.selected_text,
+                chapter_filter=request.chapter_context
+            )
+        else:
+            # Temporary response while RAG is disabled
+            rag_result = {
+                "answer": "🚧 RAG chatbot is currently being deployed. Basic API is live! Full chat functionality will be available soon.",
+                "sources": []
+            }
         
         # Save to database
         conversation = save_conversation(
