@@ -12,10 +12,10 @@ import uuid
 
 # Import custom modules
 from database import get_db, init_db, save_conversation, get_conversation_history, save_feedback, track_event
+from rag_gemini_embeddings import chat_with_rag
 
-# Temporarily disable RAG import for deployment testing
-# from rag_free import chat_with_rag
-RAG_ENABLED = False
+# RAG is now enabled with Google Gemini Embeddings (lightweight, cloud-based)
+RAG_ENABLED = True
 
 load_dotenv()
 
