@@ -12,7 +12,7 @@ load_dotenv()
 
 # Initialize Gemini
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-gemini_model = genai.GenerativeModel('gemini-2.0-flash-exp')
+gemini_model = genai.GenerativeModel('gemini-1.5-flash')  # Stable FREE model with 1500 requests/day
 
 # Initialize Qdrant
 qdrant_client = QdrantClient(
