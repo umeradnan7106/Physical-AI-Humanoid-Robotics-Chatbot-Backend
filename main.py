@@ -81,9 +81,11 @@ async def startup_event():
 
 # Health check endpoint
 @app.get("/", response_model=HealthResponse)
+@app.head("/", response_model=HealthResponse)
 @app.get("/health", response_model=HealthResponse)
+@app.head("/health", response_model=HealthResponse)
 async def health_check():
-    """Health check endpoint"""
+    """Health check endpoint - supports both GET and HEAD for monitoring services"""
     return HealthResponse(
         status="healthy",
         version="1.0.0",
